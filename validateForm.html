@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>validate form</title>
+</head>
+<body>
+	<button type="button">确定</button>
+	<span>点我</span>
+	<form id="registerForm" action="">
+		<input name="userName" type="text" data-valiate="姓名:required,chinese">
+		<input name="age" type="text" data-validate="年龄:required,number">
+		<footer>
+			<button type="button">确定</button>
+		</footer>
+	</form>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/validateForm.js"></script>
+	<script src="Js/test.js"></script>
+	<script>
+		var button = document.querySelector("button");
+		button.onclick = function(event){
+		    debugger;
+		 console.log("click");   
+		}
+		button.ondbclick = function(event){
+		    console.log("dbclick");    
+		}
+		var span = document.querySelector("span");
+		span.ondbclick = function(){
+			debugger;
+		 console.log("dbclick-span");   
+		}
+	</script>
+</body>
+</html>
