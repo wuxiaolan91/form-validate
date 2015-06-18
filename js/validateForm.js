@@ -10,25 +10,25 @@
 		 * @param  {dom结构} elem [要检测语法的js dom节点]
 		 * @return {boolean}      为 true则表示该dom节点语法都ok,否则表示没有通过语法检测
 		 */
-		var checkRule =function(elem){
+		var checkRule = function(elem){
 				elem = $(this);
 				if(!this.nodeName){
 					return true;
 				}
 				//this = elem;
-					var thisSelect = null;
-					var $parent = $(this).parent();
-					var $tip = $parent.children('.tip');//这个输入项的错误提示元素
-					var validateRule = $(this).data("validate");//这里面不同的验证规则应该是用逗号分隔的
-					var isVisible = $(this).is(":visible");
-					var validateTip = $(this).data("vtip");
-					var isValidatePass = true;
+					var thisSelect = null,
+						$parent = $(this).parent(),
+						$tip = $parent.children('.tip'),//这个输入项的错误提示元素
+						validateRule = $(this).data("validate"),//这里面不同的验证规则应该是用逗号分隔的
+						isVisible = $(this).is(":visible"),
+						validateTip = $(this).data("vtip"),
+						isValidatePass = true;
 					if(!validateRule || !isVisible){
 						return true;
 					}
-					var validateItemName = validateRule.split(":")[0];//验证项的名称
-					var validateItemValue = validateRule.split(":")[1];
-					var nodeName = $(this)[0].nodeName,
+					var validateItemName = validateRule.split(":")[0],//验证项的名称
+						validateItemValue = validateRule.split(":")[1],
+						nodeName = $(this)[0].nodeName,
 						minLength = 0,
 						value = "", //填写项的内容
 						tipContent = "", //错误提示的内容
@@ -293,14 +293,11 @@
 			if(!validate($(this))){
 				return false;
 			}
-			var val = $(this).val();
-			var target = event.target;
-			var relatedTarget = event.relatedTarget;
-			console.log("val"+val);
-			
-			if(val){
+			var val = $(this).val(),target = event.target,relatedTarget = event.relatedTarget;
+
+			if(val){ 
 				if(relatedTarget){
-					//如果点击的目标元素是提交按钮,那么久不做当钱元素失去焦点的语法判断
+					//如果点击的目标元素是提交按钮,那么就不做当钱元素失去焦点的语法判断
 					if($(relatedTarget).hasClass("submit")){
 						return;
 					}else if($(relatedTarget).hasClass("clearBtn")&&$(relatedTarget).parent()==$(this).parent()){
@@ -330,24 +327,14 @@
 			//}
 			
 		});
-			/*var CFG = {
-				phone:{
-					callback:function(paramData){ //可能的接口验证
 
-					}
-				},cardId:{
-					callback:function(paramData){
-
-					}
-				}
-			};*/
-			/**
-			 * 验证该jQuery表单元素里的input,textarea,select
-			 * 调用方式:$formElem.validateForm();
-			 * 			表单元素里的表单控件得写验证规则,比如<input data-validate="用户名:required" />
-			 * @param  Object paramData 参数对象
-			 * @return boolean           验证通过返回true,否则返回false
-			 */
+		/**
+		 * 验证该jQuery表单元素里的input,textarea,select
+		 * 调用方式:$formElem.validateForm();
+		 * 			表单元素里的表单控件得写验证规则,比如<input data-validate="用户名:required" />
+		 * @param  Object paramData 参数对象
+		 * @return boolean           验证通过返回true,否则返回false
+		 */
 		
 		$.fn.validateForm = function(paramData){
 			
@@ -359,14 +346,7 @@
 			$(this).addClass('validateForm');//添加这个类,以便控制该form下的提示的样式
 			var registerStepOne = document.forms.registerStepOne;
 			var $validateELemList = $(this).find("[data-validate]");
-			
-			/*for(var i=$validateELemList.length;i>$validateELemList.length;i--){h                                                                                                                                                             
-				if(!a){
-					isValidatePass = false;
-					return false;
-				}
-			}*/
-			
+
 			$validateELemList.removeClass("validateNoPass")
 			$(this).find("[data-validate]").each(function(index, el) {
 				$(el).removeClass('validateNoPass');
