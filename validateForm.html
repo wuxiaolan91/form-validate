@@ -4,15 +4,21 @@
 	<meta charset="UTF-8">
 	<title>validate form</title>
 	<meta name="viewport" content="width=device-width;initial-scale=1">
-	<link rel="stylesheet" href="css/base.css">
+	<!-- <link rel="stylesheet" href="css/base.css"> -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="wrap">
+	<div class="container">
+		<h1>表单验证示例</h1>
 		<form id="validateForm" action="">
+			<div class="form-group">
+				<label for="userName">中文名</label>
+				<input id="userName" class="form-control" type="text" data-validate="中文:required,chinese">
+			</div>
 			<ul>
 				<li>
 					<h2>中文</h2>
-					<input type="text" data-validate="中文:required,chinese">
+					
 				</li>
 				<li>
 					<h2>银行卡</h2>
@@ -38,7 +44,7 @@
 	
 	<script src="js/zepto.min.js"></script>
 	<script src="js/validateForm.js"></script>
-	<script src="Js/test.js"></script>
+	<script src="js/test.js"></script>
 	<script>
 		var $validateBtn = $(".validateBtn");
 		$validateBtn.tap(function(){
