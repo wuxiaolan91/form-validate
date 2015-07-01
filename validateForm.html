@@ -3,20 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>validate form</title>
+	<meta name="viewport" content="width=device-width;initial-scale=1">
+	<link rel="stylesheet" href="css/base.css">
 </head>
 <body>
-	<button type="button">确定</button>
-	<span>点我</span>
-	<form id="registerForm" action="">
-		<input name="userName" type="text" data-validate="姓名:required,chinese">
-		<input name="age" type="text" data-validate="年龄:required,number">
-		<footer>
-			<button type="button">确定</button>
-		</footer>
-	</form>
+	<div id="wrap">
+		<form id="validateForm" action="">
+			<ul>
+				<li>
+					<input type="text" data-validate="中文:required,chinese">
+				</li>
+				<li>
+					<input type="text">
+				</li>
+				<li>
+					<input type="text">
+				</li>
+			</ul>
+			
+		</form>
+		<button class="validateBtn" type="button">确定</button>
+		<span>点我</span>
+		<form id="registerForm" action="">
+			<input name="userName" type="text" data-validate="姓名:required,chinese">
+			<input name="age" type="text" data-validate="年龄:required,number">
+			<footer>
+				<button type="button">确定</button>
+			</footer>
+		</form>
+	</div>
+	
 	<script src="js/zepto.min.js"></script>
 	<script src="js/validateForm.js"></script>
 	<script src="Js/test.js"></script>
+	<script>
+		var $validateBtn = $(".validateBtn");
+		$validateBtn.tap(function(){
+			debugger;
+			$("#validateForm").validateForm();
+		})
+	</script>
 	
 </body>
 </html>
