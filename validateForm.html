@@ -11,13 +11,16 @@
 		<form id="validateForm" action="">
 			<ul>
 				<li>
+					<h2>中文</h2>
 					<input type="text" data-validate="中文:required,chinese">
 				</li>
 				<li>
-					<input type="text">
+					<h2>银行卡</h2>
+					<input type="text" data-validate="银行卡:required,bankNumber">
 				</li>
 				<li>
-					<input type="text">
+					<h2>非必须填写</h2>
+					<input type="text" data-validate="银行卡:required,bankNumber">
 				</li>
 			</ul>
 			
