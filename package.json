@@ -1,0 +1,28 @@
+{
+  "name": "form-validate",
+  "version": "1.0.0",
+  "description": "表单验证的开源插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wuxiaolan91/form-validate.git"
+  },
+  "keywords": [
+    "form",
+    "validate"
+  ],
+  "author": "wuxiaolan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wuxiaolan91/form-validate/issues"
+  },
+  "homepage": "https://github.com/wuxiaolan91/form-validate",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1"
+  }
+}
