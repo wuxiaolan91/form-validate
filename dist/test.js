@@ -1,0 +1,1 @@
+!function(){var i=null,n={init:function(){i=this,i.bind()},bind:function(){$("button").click(function(){$("#registerForm").validateForm()})}};n.init()}();

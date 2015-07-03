@@ -1,0 +1,1 @@
+require(["tabview","treeview"],function(e,i){new e.TabView,new i.TreeView});

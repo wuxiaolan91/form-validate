@@ -1,0 +1,187 @@
+@charset "utf-8";
+/*
+ reset default css 	
+*/
+body,
+ul,
+ol,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+p,
+blockquote,
+th,
+td,
+pre {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: '\5fae\8f6f\96c5\9ed1';
+}
+li {
+  list-style: none outside none;
+}
+a:link,
+a:hover {
+  text-decoration: none;
+}
+a img {
+  border: 0;
+  vertical-align: bottom;
+}
+button {
+  background-color: transparent;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+fieldset {
+  border: none;
+}
+legend {
+  display: none;
+}
+body {
+  font-family: "宋体", Helvetica, STHeiTi, sans-serif;
+  font-size: 24px;
+}
+i {
+  display: inline-block;
+}
+.wrap em {
+  font-style: normal;
+}
+/* 响应式开发 start */
+html,
+.wrap {
+  font-size: 24px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+/* 模块样式 */
+.validateForm .tip {
+  margin-top: 0.5em;
+  color: red;
+}
+/* 模块样式end */
+h1,
+h2,
+input,
+textarea,
+select {
+  font-size: 24px;
+}
+@media (min-width: 320px) and (max-width: 360px) {
+  html,
+  .wrap,
+  body,
+  input,
+  h1,
+  h2,
+  h3,
+  h4,
+  select,
+  textarea {
+    font-size: 12px;
+  }
+}
+@media (min-width: 360px) and (max-width: 480px) {
+  html,
+  .wrap,
+  body,
+  input,
+  h1,
+  h2,
+  h3,
+  h4,
+  select,
+  textarea {
+    font-size: 13.44px;
+  }
+}
+@media (min-width: 480px) and (max-width: 639px) {
+  html,
+  .wrap,
+  body,
+  input,
+  h1,
+  h2,
+  h3,
+  h4,
+  select,
+  textarea {
+    font-size: 18px;
+  }
+}
+#globalTip {
+  z-index: 2000;
+  display: none;
+  box-sizing: border-box;
+  position: fixed;
+  left: 50%;
+  top: 150px;
+  width: 20.83333333em;
+  /*height: 4.16666667em;*/
+  /*padding-top: 1em;*/
+  background-color: rgba(0, 0, 0, 0.7);
+  /*border: 1px solid #ddd;*/
+  text-align: center;
+  /* */
+  /*padding: 10px 20px;*/
+  color: #fff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  line-height: 3;
+}
+#globalTip p {
+  display: inline-block;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+#globalTip .waitIcon {
+  display: block;
+  width: 2.95rem;
+  height: 2.95rem;
+  margin: 2rem auto 0;
+  background: url(img/loading.gif);
+  /*background: url(img/waitTip.png);
+     background-size: 550/24em 400/24em; */
+  background-size: contain;
+  /*-webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+     -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform-origin:inherit!important; 
+    transform-origin:inherit!important; */
+  vertical-align: middle;
+}
+.fixedFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

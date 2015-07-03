@@ -4,25 +4,13 @@
 	<meta charset="UTF-8">
 	<title>validate form</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<!-- <link rel="stylesheet" href="css/base.css"> -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/base.css">
-	<style>
-		body{
-			margin-top: 10%;
-		}
-		footer{
-			text-align: center;
-		}
-		footer button{
-			width: 60%;
-			margin: 20% auto 0;
-		}
-	</style>
+	<!-- <link rel="stylesheet" href="css/base-73ec1feb22.css"> -->
+	<link rel="stylesheet" href="css/bootstrap.min-5d5357cb37.css">
+	<link rel="stylesheet" href="css/base-73ec1feb22.css">
 </head>
 <body>
 	<div class="container">
-		
+		<h1>表单验证示例</h1>
 		<form id="validateForm" action="">
 			<div class="form-group">
 				<label for="userName">中文名</label>
@@ -36,25 +24,22 @@
 				<label for="notRequired">非必须填写</label>
 				<input id="notRequired" type="text" class="form-control" data-validate="非必须填写:required,bankNumber">
 			</div>
-			<footer>
-				<button class="submit btn btn-info" type="button">确定</button>
-			</footer>
-			
+			<button class="submit" type="button">确定</button>
 		</form>
 		
 		
 	</div>
-	<!-- <script src="js/require.js" data-main = "js/main"></script> -->
-	<script src="js/zepto.min.js"></script>
-	<script src="js/validateForm.js"></script>
-	<script src="js/test.js"></script>
+	<script src="js/require-e1484b205f.js" data-main = "js/main"></script>
+	<!--<script src="js/zepto.min-4cd5b74341.js"></script>
+	<script src="js/validateForm-83e2affcc3.js"></script>
+	<script src="js/test-4bbaa83b4a.js"></script>
 	<script>
 		var $validateBtn = $(".submit");
 		$validateBtn.tap(function(){
 			debugger;
 			$("#validateForm").validateForm();
 		})
-	</script>
+	</script>-->
 	
 </body>
 </html>

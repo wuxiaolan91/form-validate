@@ -1,0 +1,1 @@
+define(function(){function n(){}return{Animate:n}});
