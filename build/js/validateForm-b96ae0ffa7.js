@@ -104,7 +104,7 @@
 							
 							isValidatePass = false;
 							isThisValidate = false;
-							//console.log(elem.attr('data-empty-msg')||tipContent);
+							console.log(elem.attr('data-empty-msg')||tipContent);
 							return false;
 						}
 					}else{

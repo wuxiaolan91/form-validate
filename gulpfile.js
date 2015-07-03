@@ -32,11 +32,11 @@ gulp.task('minify', function() {
     .pipe(path.dest.html)
 });
 
-gulp.task("css",["clean",function(){
+gulp.task("css",["clean"],function(){
 	gulp.src("css/*.css")
 	// .pipe(csso())
 	.pipe(rev())
-	.pipe(gulp.dest("build"))
+	.pipe(gulp.dest(path.dest.css))
 	.pipe( rev.manifest() )
 	.pipe( gulp.dest( "rev/css" ) );
 })
@@ -47,10 +47,10 @@ gulp.task('jsmin', function() {
     .pipe( gulp.dest( "dist") );
 });
 
-gulp.task('scripts',["clean",function () {
+gulp.task('scripts',["clean"],function () {
     return gulp.src(path.dev.js)
-        .pipe(rev())
-        .pipe(gulp.dest(path.dest.js))
+        .pipe( rev() )
+        .pipe( gulp.dest(path.dest.js) )
         .pipe( rev.manifest() )
         .pipe( gulp.dest( 'rev/js' ) );
 });
