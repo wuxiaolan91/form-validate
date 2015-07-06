@@ -146,10 +146,7 @@
 						
 							
 						//}
-						
-						
-						
-					
+
 					if(validate == "passwordOther"){ //密码验证
 						if(!validateObj.isPasswordOther(value)){ //手机格式不正确
 							isThisValidate = false;
@@ -173,11 +170,6 @@
 								isThisValidate = false;
 							}
 						}
-						/*else if(/(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]{8}/.test(value)) { //是8位的数字和字母的组合
-							
-						}else{
-							 isThisValidate = false;
-						}*/
 					}else if(validate.indexOf("telarea")>-1){
 						if(!validateObj.checkTelarea(value)){ //固定电话区号不正确
 							isThisValidate = false;
@@ -232,13 +224,13 @@
 						if(!validateObj.isCompanyName(value)){ //不是公司名称
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("trueName")>-1){
+					}else if(validate == trueName){
 						if(!validateObj.isUserName(value)){ //不是公司名称
 							isThisValidate = false;
 						}
 					//增加数字范围判断
 					}
-					if(validate.indexOf("range")>-1){
+					if(validate == "range"){
 						if(isNaN(value)){
 							isThisValidate = false;
 						}else{
