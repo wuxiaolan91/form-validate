@@ -30,6 +30,159 @@
 			       return false;
 			   }   
 			   return true;
+			},
+			/**是不是银行卡卡号
+			 * 
+			 * @return {Boolean} [返回true代表是银行卡号,否则为false]
+			 */
+			isBankNumber:function(str){
+				if(str.length==16||str.length==19){
+					return true;
+				}else{
+					return false;
+				}
+			},
+			/**
+			 * 是否是密码
+			 * @return {Boolean} [description]
+			 */
+			isPassword:function(str){
+				var filter = /^([0-9a-zA-Z]){6,20}$/;
+				if (!filter.exec(str)) return false;
+					return true;
+			},
+			/**
+			 * 是否是密码Other
+			 * @return {Boolean} [description]
+			 */
+			isPasswordOther:function(str){
+				// var filter = /^([0-9a-zA-Z]){6,20}$/;
+				var filter = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$/;
+				if (!filter.exec(str)) return false;
+					return true;
+			},
+			isEmail:function(email){
+		   		var strEmail=$.trim(email);
+		   		//^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$
+		   		if (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(strEmail)){
+				    //return true;
+				    return true;
+				  }else{
+				    //if(showMsg==null||showMsg=="") alert("Email格式不正确");
+				    //return false;
+				    //if(showMsg==null||showMsg=="") reback="Email格式不正确";
+				    return false;
+				  }
+			},
+			/**
+			 * 字符的长度
+			 * @param  {[type]} str [description]
+			 * @return {[type]}     [description]
+			 */
+			strLen:function(str){
+				var len = 0;   
+				  for(i=0;i<str.length;i++)   
+				  {   
+					if(str.charCodeAt(i)>256)   
+					{   
+						len += 2;   
+					}   
+					else   
+					{   
+						len++;   
+					}   
+				  }   
+					return len;
+			},
+			/**
+			 * 验证是不是中文字符
+			 * @param  {[type]} strChinese [description]
+			 * @param  {[type]} showMsg    [description]
+			 * @return {[type]}            [description]
+			 */
+			isChinese:function(strChinese,showMsg){
+				var reg=/^[\u4e00-\u9fa5]+$/i;
+			   //var reg=/^[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/;//支持少数民族
+			   var str=$.trim(strChinese);
+			   if(!reg.test(str)){
+			       //if(showMsg==null||showMsg=="") alert("请输入汉字!");
+			       return false;
+			   }   
+			   return true;
+			},
+			/**
+			 * 验证字符的位数
+			 * @return {[boolean]} [description]
+			 */
+			checkLength:function(str){
+				return /[0-9]|[a-z][A-Z]{6,20}/.test(str);
+			},
+			/**
+			* 验证QQ
+			*/
+			checkQQ:function(str){
+				return /^[1-9][0-9]{2,9}$/.test(str);
+			},
+			/**
+			 * 验证用户的手机号
+			 * @param  int cellPhone 用户的手机号码
+			 * @return boolean           格式正确返回true,否则返回false
+			 */
+			checkCellPhone:function(cellPhone){
+				return  /^0?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/.test(cellPhone);
+			},
+			checkPhoneCode:function(str){
+				return /[0-9]|[a-z][A-Z]{8}/.test(str);
+			},
+			/**
+			 * 验证用户的固定电话的区号
+			 * @param  int telarea 用户的固定电话的区号
+			 * @return boolean           格式正确返回true,否则返回false
+			 */
+			checkTelarea:function(telarea){
+				;
+				return /^0[0-9]{2,3}$/.test(telarea);
+			},
+			/**
+			 * 验证用户的固定电话的号码
+			 * @param  int telnum 用户的固定电话的号码
+			 * @return boolean           格式正确返回true,否则返回false
+			 */
+			checkTelnum:function(telnum){
+				return  /^[2-9][0-9]{6,7}$/.test(telnum);
+			},
+			/**
+			 * 检查身份证是否格式正确
+			 * @param  string id 身份证号
+			 * @return boolean    格式正确返回true,否则返回false
+			 */
+			checkcardId:function(id){
+				return /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test(id);
+			},
+			/**
+			 * 检查用户名是否是真实姓名
+			 * @param  string userName 用户名
+			 * @return boolean          格式正确返回true,否则返回false
+			 */
+			isUserName:function(userName){
+				return /^[\u4e00-\u9fa5]{1,10}[·.]{0,1}[\u4e00-\u9fa5]{1,10}$/.test(userName);
+			},
+			isCompanyName:function(Companyname){
+				var len=Companyname.length;
+				var name=Companyname.split("");
+				  for(var i=0;i<len;i++)
+				  {
+				    if(name[i]=='（'||name[i]=='）'||name[i]=='('||name[i]==')'||name[i]=='.'||name[i]=='-'||name[i]=='&'||(name[i]>='A'&&name[i]<='Z')||(name[i]>='a'&&name[i]<='z')||self.isChinese(name[i]))
+				    {}
+				    else
+				    {
+				      return false;
+				    }
+				  }
+				  return true;
+			},
+			trimAll: function (str) {
+				return str.replace(/\s+/g,"");
 			}
 
 		};
@@ -121,31 +274,27 @@
 							break;
 						}
 					}
-						//if(isThisValidate){
 						
-							if(secondWord.indexOf("-")>-1){
-								//debugger;
-								splitPosition = secondWord.indexOf("-");
-								secondWordFirst = secondWord.split("-")[0];
-								secondWordLast = secondWord.split("-")[1];
-								if(secondWordFirst!="*"){
-									if(value<secondWordFirst){
-										tipContent = "请输入>"+secondWordFirst;
-										if(strType){
-											tipContent += "的数字";
-										}
-										isThisValidate = false;
-										isValidatePass = false;
-										break;
-										
-									}else{
-										
-									}
+					if(secondWord.indexOf("-")>-1){
+						//debugger;
+						splitPosition = secondWord.indexOf("-");
+						secondWordFirst = secondWord.split("-")[0];
+						secondWordLast = secondWord.split("-")[1];
+						if(secondWordFirst!="*"){
+							if(value<secondWordFirst){
+								tipContent = "请输入>"+secondWordFirst;
+								if(strType){
+									tipContent += "的数字";
 								}
+								isThisValidate = false;
+								isValidatePass = false;
+								break;
+								
+							}else{
+								
 							}
-						
-							
-						//}
+						}
+					}
 
 					if(validate == "passwordOther"){ //密码验证
 						if(!validateObj.isPasswordOther(value)){ //手机格式不正确
