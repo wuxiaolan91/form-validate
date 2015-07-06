@@ -288,11 +288,7 @@
 						}
 					}
 
-					if(validate == "passwordOther"){ //密码验证
-						if(!validateObj.isPasswordOther(value)){ //手机格式不正确
-							isThisValidate = false;
-						}
-					}else if(validate.indexOf("password")>-1){
+					if(validate == "password"){
 						if(!validateObj.isPassword(value)){
 
 							isThisValidate = false;

@@ -51,16 +51,16 @@ ps:现在支持的表单控件:输入框和下拉列表
 <input type="text" data-validate="银行卡号:bankNumber">
 ```
 9.真实姓名(非网络用名)
-```真实姓名
+```html
 <input type="text" data-validate="真实姓名:trueName">
 ```
 10.company
-```公司名
+```html
 <input type="text" data-validate="公司名:company">
 ```
-11.company
-```公司名
-<input type="text" data-validate="公司名:company">
+11.手机号
+```html
+<input type="text" data-validate="公司名:phone">
 ```
 12.range
 ```html
