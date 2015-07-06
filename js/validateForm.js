@@ -7,14 +7,6 @@
 	var cfg = null,
 		validateTip = "",
 		validateObj = {
-			isBankNumber:function(str){
-				
-				if(str.length==16||str.length==19){
-					return true;
-				}else{
-					return false;
-				}
-			},
 			/**
 			 * 验证是不是中文字符
 			 * @param  {[type]} strChinese [description]
