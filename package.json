@@ -26,15 +26,17 @@
     "grunt-contrib-uglify": "^0.9.1",
     "gulp": "^3.9.0",
     "gulp-asset-rev": "0.0.5",
+    "gulp-changed": "^1.2.1",
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^1.0.0",
-    "gulp-jshint": "^1.11.1",
+    "gulp-jshint": "^1.11.2",
     "gulp-md5-assets": "^0.1.9",
     "gulp-minify-html": "^1.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^5.0.1",
     "gulp-rev-collector": "^1.0.0",
-    "gulp-uglify": "^1.2.0"
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4"
   }
 }

@@ -1,4 +1,5 @@
 (function(){
+
 	/**
 	 * auther:吴晓兰
 	 * 这个表单验证组件,我打算写成一个zepto的元素的拓展方法
@@ -7,6 +8,7 @@
 		validateTip = "",
 		validateObj = {
 			isBankNumber:function(str){
+				
 				if(str.length==16||str.length==19){
 					return true;
 				}else{
@@ -157,7 +159,7 @@
 
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("phone")>-1){ //验证手机格式
+					}else if(validate == "phone"){ //验证手机格式
 						if(!validateObj.checkCellPhone(value)){ //手机格式不正确
 							isThisValidate = false;
 						}
@@ -189,15 +191,15 @@
 						if(!isTelarea){
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("number")>-1){ //验证数字格式
+					}else if(validate == "number"){ //验证数字格式
 						if(isNaN(value)){
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("qq")>-1){ //验证QQ
+					}else if(validate == "qq"){ //验证QQ
 						if(!validateObj.checkQQ(value)){
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("cardId")>-1){ //验证身份证格式
+					}else if(validate == "cardId"){ //验证身份证格式
 						
 						if(validateObj.checkcardId(value)!=true){ 
 							isThisValidate = false;
@@ -206,11 +208,11 @@
 						if(!validateObj.isChinese(value)){ //有非中文字符的东西
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("email")>-1){
+					}else if(validate == "email"){
 						if(!validateObj.isEmail(value)){ //不是邮件
 							isThisValidate = false;
 						}
-					}else if(validate.indexOf("bankNumber")>-1){ //银行卡号
+					}else if(validate == "bankNumber"){ //银行卡号
 						try{
 							if(!validateObj.isBankNumber(value)){ //不是邮件
 								isThisValidate = false;

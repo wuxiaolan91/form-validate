@@ -10,6 +10,7 @@ var path = {
 	}
 }
 var gulp = require('gulp'),
+	watch = require("gulp-watch"),
 	htmlmin = require("gulp-minify-html"),
 	uglify = require('gulp-uglify'),
 	assetRev = require("gulp-asset-rev"),
@@ -25,7 +26,19 @@ gulp.task("clean",function(){
 	return gulp.src(["build","rev"],{read:false})
 		.pipe(clean());
 })
+//监视
+gulp.task("watch",function(){
+	watch("js/*.js",function(){
+		console.log("变化啦")
+	})
+})
 
+gulp.task("concat",function(){
+	return gulp.src(["js/zepto.js","js/validateForm.js"])
+		.pipe(concat())
+		.pipe( gulp.dest("build/js/all.js"))
+
+})
 gulp.task('minify', function() {
   return gulp.src(path.dev.html)
     .pipe(htmlmin({collapseWhitespace: true}))
@@ -41,10 +54,20 @@ gulp.task("css",["clean"],function(){
 	.pipe( gulp.dest( "rev/css" ) );
 })
 
+gulp.task("js",function(){
+	return gulp.src(path.dev.js)
+	.pipe();
+})
+gulp.task('lint', function() {
+  return gulp.src(path.dev.js)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
 gulp.task('jsmin', function() {
   return gulp.src(path.dev.js)
     .pipe(uglify())
-    .pipe( gulp.dest( "dist") );
+    .pipe( gulp.dest( path.dest.js) );
 });
 
 gulp.task('scripts',["clean"],function () {
@@ -78,7 +101,7 @@ gulp.task('srev',["clean","css","scripts"],function() {
 	.pipe(gulp.dest(path.dest.html));
 });
 
-gulp.task('concat', function () {
+gulp.task('concat',["clean"],function () {
     gulp.src(path.dev.js)
         .pipe(concat('all.js'))//合并后的文件名
         .pipe(gulp.dest(path.dest.js));
@@ -91,4 +114,5 @@ gulp.task("md5",function(){
 	.pipe(gulp.dest("./build"));
 })
 
-gulp.task("default",["clean","css","scripts","srev"]);
+gulp.task("default",["clean"]);
+gulp.task("build",["clean","css","clean","scripts","srev"]);
