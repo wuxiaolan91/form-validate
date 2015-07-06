@@ -18,8 +18,9 @@
 表单根据用户写的规则项,智能提示.
 
 ##### 1.必填
-``` html
+```html
 <input type="text" data-validate="必填:required">
+```
 2.中文
 <input type="text" data-validate="中文:chinese">
 3.数字
