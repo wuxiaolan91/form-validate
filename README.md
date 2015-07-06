@@ -22,16 +22,30 @@
 <input type="text" data-validate="必填:required">
 ```
 2.中文
+```html
 <input type="text" data-validate="中文:chinese">
+```
 3.数字
+```html
 <input type="text" data-validate="数字:number">
+```
 4.密码
+```html
 <input type="password" data-validate="密码:password">
+```
 5.qq
+```html
 <input type="text" data-validate="qq:qq">
+```
 6.身份证
+```html
 <input type="text" data-validate="身份证:cardId">
+```
 7.邮箱地址:
+```html
 <input type="text" data-validate="邮箱地址:email">
+```
 8.银行卡号
+```html
 <input type="text" data-validate="银行卡号:bankNumber">
+```
