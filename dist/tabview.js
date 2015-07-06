@@ -1,1 +1,0 @@
-define(["animate"],function(n){function e(){this.animate=new n.Animate}return{TabView:e}});
