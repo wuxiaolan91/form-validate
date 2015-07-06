@@ -52,25 +52,31 @@
 9.真实姓名(非网络用名)
 ```真实姓名
 <input type="text" data-validate="真实姓名:trueName">
-
+```
 10.company
 ```公司名
 <input type="text" data-validate="公司名:company">
-
+```
 11.company
 ```公司名
 <input type="text" data-validate="公司名:company">
-
+```
 12.range
+```html
 <input type="text" data-validate="范围:range">
+```
 这里
 data-start设置最小值,data-end设置最大值
 
 13.最小长度
+```html
 <input type="text" data-validate="用户名:minLength5">
-
+```
 14.最大长度
+```html
 <input type="text" data-validate="用户名:maxLength15">
-
+```
 ### 如果一个输入框有多个校验项目,用在校验规则里用逗号隔开,比如
+```html
 <input type="text" data-validate="用户名:minLength5,maxLength15">
+```
