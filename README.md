@@ -76,7 +76,7 @@ data-start设置最小值,data-end设置最大值
 ```html
 <input type="text" data-validate="用户名:maxLength15">
 ```
-### 如果一个输入框有多个校验项目,用在校验规则里用逗号隔开,比如
+### 如果一个输入框有多个校验项目,在校验规则里用逗号隔开,比如
 ```html
 <input type="text" data-validate="用户名:minLength5,maxLength15">
 ```
