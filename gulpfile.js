@@ -1,16 +1,21 @@
 var path = {
 	dev:{
-		html:"/*.html",
-		js:"js/*.js",
-		css:"css/*.css"
-	},dest:{
+		html:"./*.html",
+		js:"./js/*.js",
+		css:"./css/*.css"
+	},
+	buildDir:"build",
+	dest:{
 		html:"./build/",
 		js:"build/js",
 		css:"build/css"
+	},rev:{
+		css:"build/rev/css"
 	}
 }
 var gulp = require('gulp'),
 	watch = require("gulp-watch"),
+	copy = require("gulp-copy"),
 	htmlmin = require("gulp-minify-html"),
 	uglify = require('gulp-uglify'),
 	assetRev = require("gulp-asset-rev"),
@@ -28,11 +33,18 @@ gulp.task("clean",function(){
 })
 //监视
 gulp.task("watch",function(){
-	watch("js/*.js",function(){
-		console.log("变化啦")
-	})
+	
+	gulp.src("**/*/*.css")
+		.pipe( watch("**/*/*.css") )
+		.pipe(gulp.task("build"));
+
 })
 
+gulp.task("copy",["clean"],function(){
+	gulp.src("./**/*")
+  	.pipe(copy("./build"))
+  	.pipe(gulp.dest("./build"));
+})
 gulp.task("concat",function(){
 	return gulp.src(["js/zepto.js","js/validateForm.js"])
 		.pipe(concat())
@@ -46,46 +58,33 @@ gulp.task('minify', function() {
 });
 
 gulp.task("css",["clean"],function(){
-	gulp.src("css/*.css")
-	// .pipe(csso())
+	return gulp.src(path.dev.css)
+	
 	.pipe(rev())
+	.pipe(csso())
 	.pipe(gulp.dest(path.dest.css))
+	//.pipe()
 	.pipe( rev.manifest() )
 	.pipe( gulp.dest( "rev/css" ) );
 })
 
-gulp.task("js",function(){
-	return gulp.src(path.dev.js)
-	.pipe();
-})
-gulp.task('lint', function() {
-  return gulp.src(path.dev.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
-gulp.task('jsmin', function() {
-  return gulp.src(path.dev.js)
-    .pipe(uglify())
-    .pipe( gulp.dest( path.dest.js) );
-});
-
 gulp.task('scripts',["clean"],function () {
     return gulp.src(path.dev.js)
         .pipe( rev() )
+        .pipe( uglify() )
         .pipe( gulp.dest(path.dest.js) )
         .pipe( rev.manifest() )
         .pipe( gulp.dest( 'rev/js' ) );
 });
 
-
-
 gulp.task('rev',function() {
-  
+  gulp.src("./*.html")
+  	.pipe($.copy("./build"))
+  	.pipe(gulp.dest("./build"));
     /*gulp.src(path.dev.html)
     	.pipe(assetRev())
     	.pipe(gulp.dest("build/js"));*/
-    return gulp.src(["rev/**/*.json","./*.html"])
+    return gulp.src(["rev/**/*.json","./build/*.html"])
 	    .pipe(revCollector({
 	    	replaceReved:true
 	    }))
@@ -94,6 +93,7 @@ gulp.task('rev',function() {
 });
 
 gulp.task('srev',["clean","css","scripts"],function() {
+	
   	gulp.src("./*.html")
 	.pipe(assetRev({
 		hashLen:10
@@ -115,4 +115,4 @@ gulp.task("md5",function(){
 })
 
 gulp.task("default",["clean"]);
-gulp.task("build",["clean","css","clean","scripts","srev"]);
+gulp.task("build",["clean","css","scripts","srev"]);
