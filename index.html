@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	define('Dialog', ['jquery'], function ($) {
+		var TPL = '<div class=xxx>' +
+		'{content}' +
+		'<div class=btn-group>{}</div>'
+		'</div>';
+		function Dialog (config) {
+			config = config || {};
+			var defaultConfig = {
+			};
+			for (var key in config) {
+			}
+			$(TPL)
+			.on('click', config.callback||close,        '.J-close')
+		}
+		Dialog.prototype.close = function () {
+			this._dom.remove()
+		}
+		Dialog.prototype.alert = function(){
+			return Dialog;
+		}
+		return {
+			alert: function (text) {
+				var d = new Dialog({
+					content: text
+				})
+				// insertdom
+			},
+
+			confirm: function 
+		};
+	})
+	require("Dialog",function(dialog){
+		dialog.alert();
+	})
+	</script>
+</body>
+</html>

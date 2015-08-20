@@ -34,9 +34,8 @@ gulp.task("clean",function(){
 //监视
 gulp.task("watch",function(){
 	
-	gulp.src("**/*/*.css")
-		.pipe( watch("**/*/*.css") )
-		.pipe(gulp.task("build"));
+	gulp.src("**/*/*.*")
+		.pipe( watch("**/*/*.*",["build"]) );
 
 })
 
@@ -45,6 +44,7 @@ gulp.task("copy",["clean"],function(){
   	.pipe(copy("./build"))
   	.pipe(gulp.dest("./build"));
 })
+
 gulp.task("concat",function(){
 	return gulp.src(["js/zepto.js","js/validateForm.js"])
 		.pipe(concat())
@@ -114,5 +114,5 @@ gulp.task("md5",function(){
 	.pipe(gulp.dest("./build"));
 })
 
-gulp.task("default",["clean"]);
-gulp.task("build",["clean","css","scripts","srev"]);
+//gulp.task("default",["clean"]);
+gulp.task("default",["clean","css","scripts","srev"]);
