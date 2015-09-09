@@ -4,6 +4,7 @@
 	 * auther:吴晓兰
 	 * 这个表单验证组件,我打算写成一个zepto的元素的拓展方法
 	 */
+	var tip = new Tip();
 	var cfg = null,
 		validateTip = "",
 		validateObj = {
@@ -251,7 +252,7 @@
 							
 							isValidatePass = false;
 							isThisValidate = false;
-							console.log(elem.attr('data-empty-msg')||tipContent);
+							tip.show(elem.attr('data-empty-msg')||tipContent);
 							return false;
 						}
 					}else{
