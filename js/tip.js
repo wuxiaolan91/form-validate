@@ -1,16 +1,17 @@
 (function(){
 	var loadingTimeout = null;
+	var wrapId = "globalTip"
 	var Tip = function(paramData){
 		
 		var cfg = null;
 		paramData = getParamObj(paramData);
-		var $wrap = paramData.$wrap || $("#globalTip");
+		var $wrap = $(document.querySelector("#globalTip"));
 		if($wrap.length<1){
 			var wrap = document.createElement("div");
-			wrap.id = "globalTip";
+			wrap.id = wrapId;
 			wrap.innerHTML = "<div><i class='waitIcon'></i><p></p></div>";
 			document.body.appendChild(wrap);
-			$wrap = $("#globalTip");
+			$wrap = $("#"+wrapId+"");
 		}
 		cfg = {
 			$wrap:$wrap,

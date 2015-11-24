@@ -10,39 +10,23 @@
 		validateObj = {
 			/**
 			 * 验证是不是中文字符
-			 * @param  {[type]} strChinese [description]
-			 * @param  {[type]} showMsg    [description]
-			 * @return {[type]}            [description]
 			 */
-			isChinese:function(strChinese,showMsg){
-				var reg=/^[\u4e00-\u9fa5]+$/i;
-			   //var reg=/^[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/;//支持少数民族
-			   var str=$.trim(strChinese);
-			   if(!reg.test(str)){
-			       //if(showMsg==null||showMsg=="") alert("请输入汉字!");
-			       return false;
-			   }   
-			   return true;
+			isChinese:function(str){
+				return /^[\u4e00-\u9fa5]+$/i.test($.trim(str));
 			},
 			/**是不是银行卡卡号
 			 * 
 			 * @return {Boolean} [返回true代表是银行卡号,否则为false]
 			 */
 			isBankNumber:function(str){
-				if(str.length==16||str.length==19){
-					return true;
-				}else{
-					return false;
-				}
+				return /\d{16,19}/.test(str);
 			},
 			/**
 			 * 是否是密码
 			 * @return {Boolean} [description]
 			 */
 			isPassword:function(str){
-				var filter = /^([0-9a-zA-Z]){6,20}$/;
-				if (!filter.exec(str)) return false;
-					return true;
+				return /^([0-9a-zA-Z]){6,20}$/.test(result);
 			},
 			/**
 			 * 是否是密码Other
@@ -362,7 +346,7 @@
 						if(!validateObj.isCompanyName(value)){ //不是公司名称
 							isThisValidate = false;
 						}
-					}else if(validate == trueName){
+					}else if(validate.indexOf("trueName")>-1){
 						if(!validateObj.isUserName(value)){ //不是公司名称
 							isThisValidate = false;
 						}
@@ -378,7 +362,7 @@
 							}
 						}
 					}
-					tipContent = "请输入正确的" + validateItemName;
+					tipContent = elem.attr('data-msg') || "请输入正确的" + validateItemName;
 					//长度的验证
 					if(validate.toLowerCase().indexOf("length")>-1){
 						if(validate.indexOf("minLength")>-1){
@@ -419,7 +403,7 @@
 				if(validateTip){
 					tipContent = validateItemName+validateTip;
 				}
-				console.log(tipContent);
+				tip.show(tipContent);
 
 				//增加自定义msg浮框消息
 				/*loadingTip.show({
