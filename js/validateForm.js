@@ -6,12 +6,12 @@
 	 */
 	var tip = new Tip();
 	var cfg = null,
-		validateTip = "",
-		validateObj = {
+  		validateTip = "",
+	  	validateObj = {
 			/**
 			 * 验证是不是中文字符
 			 */
-			isChinese:function(str){
+			isChinese: function(str) {
 				return /^[\u4e00-\u9fa5]+$/i.test($.trim(str));
 			},
 			/**是不是银行卡卡号
@@ -37,35 +37,31 @@
 			},
 			isEmail:function(email){
 		   		return /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($.trim(email));
-
 			},
 			/**
 			 * 字符的长度
 			 * @param  {[type]} str [description]
 			 * @return {[type]}     [description]
 			 */
-			strLen:function(str){
+			strLen: function(str) {
+
 				var len = 0;   
-				  for(i=0;i<str.length;i++)   {   
-					if(str.charCodeAt(i)>256)   {   
-						len += 2;   
-					}else   {   
-						len++;   
-					}   
-				  }   
+				for(i = 0; i < str.length; i++) {
+					str.charCodeAt(i) > 256 ? len +=2 : len++;
+				}   
 					return len;
 			},
 			/**
 			 * 验证字符的位数
 			 * @return {[boolean]} [description]
 			 */
-			checkLength:function(str){
+			checkLength: function(str) {
 				return /[0-9]|[a-z][A-Z]{6,20}/.test(str);
 			},
 			/**
 			* 验证QQ
 			*/
-			checkQQ:function(str){
+			checkQQ: function(str) {
 				return /^[1-9][0-9]{2,9}$/.test(str);
 			},
 			/**
@@ -84,8 +80,7 @@
 			 * @param  int telarea 用户的固定电话的区号
 			 * @return boolean           格式正确返回true,否则返回false
 			 */
-			checkTelarea:function(telarea){
-				;
+			checkTelarea: function(telarea) {
 				return /^0[0-9]{2,3}$/.test(telarea);
 			},
 			/**
@@ -93,7 +88,7 @@
 			 * @param  int telnum 用户的固定电话的号码
 			 * @return boolean           格式正确返回true,否则返回false
 			 */
-			checkTelnum:function(telnum){
+			checkTelnum: function(telnum) {
 				return  /^[2-9][0-9]{6,7}$/.test(telnum);
 			},
 			/**
@@ -101,7 +96,7 @@
 			 * @param  string id 身份证号
 			 * @return boolean    格式正确返回true,否则返回false
 			 */
-			checkcardId:function(id){
+			checkcardId: function(id) {
 				return /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test(id);
 			},
 			/**
@@ -109,18 +104,15 @@
 			 * @param  string userName 用户名
 			 * @return boolean          格式正确返回true,否则返回false
 			 */
-			isUserName:function(userName){
+			isUserName: function(userName) {
 				return /^[\u4e00-\u9fa5]{1,10}[·.]{0,1}[\u4e00-\u9fa5]{1,10}$/.test(userName);
 			},
-			isCompanyName:function(Companyname){
-				var len=Companyname.length;
-				var name=Companyname.split("");
-				  for(var i=0;i<len;i++)
-				  {
+			isCompanyName: function(Companyname) {
+				var len = Companyname.length,name=Companyname.split("");
+				  for(var i=0;i<len;i++){
 				    if(name[i]=='（'||name[i]=='）'||name[i]=='('||name[i]==')'||name[i]=='.'||name[i]=='-'||name[i]=='&'||(name[i]>='A'&&name[i]<='Z')||(name[i]>='a'&&name[i]<='z')||self.isChinese(name[i]))
 				    {}
-				    else
-				    {
+				    else{
 				      return false;
 				    }
 				  }
@@ -138,27 +130,28 @@
 	 */
 	var checkRule = function(elem){
 		elem = $(this);
+
 		if(!this.nodeName){
 			return true;
 		}
 		//this = elem;
 			var thisSelect = null,
-				$parent = $(this).parent(),
-				$tip = $parent.children('.tip'),// 这个输入项的错误提示元素
-				validateRule = $(this).data("validate"),// 这里面不同的验证规则应该是用逗号分隔的
-				isVisible = $(this).is(":visible"),// 如果页面有用户隐藏的表单元素,那么不对它进行表单校验.
-				isValidatePass = true;
+					$parent = $(this).parent(),
+					$tip = $parent.children('.tip'),// 这个输入项的错误提示元素
+					validateRule = $(this).data("validate"),// 这里面不同的验证规则应该是用逗号分隔的
+					isVisible = $(this).is(":visible"),// 如果页面有用户隐藏的表单元素,那么不对它进行表单校验.
+					isValidatePass = true;
 
 			if(!validateRule || !isVisible) return false;
-			var validateArray = validateRule.split(":");
-			var validateItemName = validateArray[0],//验证项的名称
-				validateItemValue = validateArray[1],//验证项的规则
-				nodeName = $(this)[0].nodeName,
-				minLength = 0,
-				value = "", // 填写项的内容
-				tipContent = "", // 错误提示的内容
-				isThisValidate = true, // 该输入项是否通过验证,默认为是
-				isNull = false; // 当必填项用户没有填写时,此项为false.
+			var validateArray = validateRule.split(":"),
+					validateItemName = validateArray[0],//验证项的名称
+					validateItemValue = validateArray[1],//验证项的规则
+					nodeName = $(this)[0].nodeName,
+					minLength = 0,
+					value = "", // 填写项的内容
+					tipContent = "", // 错误提示的内容
+					isThisValidate = true, // 该输入项是否通过验证,默认为是
+					isNull = false; // 当必填项用户没有填写时,此项为false.
 
 			if($tip.length<1){ // 如果该元素下没有错误提示元素，就创建一个
 				$tip = $("<p class='tip'><span></span></p>");
@@ -195,13 +188,7 @@
 
 						if(!$.trim(value)){ //该元素为空
 							isNull = true;
-
-							if(nodeName=="SELECT"){
-								tipContent = "请选择" + validateItemName;
-							}else{
-								tipContent = "请输入"+validateItemName;
-							}
-							
+							tipContent = nodeName=="SELECT" ? "请选择" + validateItemName : "请输入"+validateItemName;
 							isValidatePass = false;
 							isThisValidate = false;
 							tip.show(elem.attr('data-empty-msg')||tipContent);
@@ -212,7 +199,7 @@
 					}
 					
 					if(validate.indexOf("n")==0){
-						strType = "数字"
+						strType = "数字";
 						if(isNaN(value)){
 							isThisValidate = false;
 							isValidatePass = false;
@@ -235,21 +222,16 @@
 								isValidatePass = false;
 								break;
 								
-							}else{
-								
 							}
 						}
 					}
 
-					if(validate == "password"){
-						if(!validateObj.isPassword(value)){
+					if(validate == "password" && !validateObj.isPassword(value)){
 
 							isThisValidate = false;
-						}
-					}else if(validate == "phone"){ //验证手机格式
-						if(!validateObj.checkCellPhone(value)){ //手机格式不正确
+					}else if(validate == "phone" && !validateObj.checkCellPhone(value)){ //验证手机格式
+							
 							isThisValidate = false;
-						}
 					}else if(validate=="inviteNum"){ //判断是否是邀请码
 						
 						value = value.toString();
