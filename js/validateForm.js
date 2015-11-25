@@ -33,23 +33,11 @@
 			 * @return {Boolean} [description]
 			 */
 			isPasswordOther:function(str){
-				// var filter = /^([0-9a-zA-Z]){6,20}$/;
-				var filter = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$/;
-				if (!filter.exec(str)) return false;
-					return true;
+				return /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$/.test(str);
 			},
 			isEmail:function(email){
-		   		var strEmail=$.trim(email);
-		   		//^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$
-		   		if (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(strEmail)){
-				    //return true;
-				    return true;
-				  }else{
-				    //if(showMsg==null||showMsg=="") alert("Email格式不正确");
-				    //return false;
-				    //if(showMsg==null||showMsg=="") reback="Email格式不正确";
-				    return false;
-				  }
+		   		return /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test($.trim(email));
+
 			},
 			/**
 			 * 字符的长度
@@ -58,34 +46,14 @@
 			 */
 			strLen:function(str){
 				var len = 0;   
-				  for(i=0;i<str.length;i++)   
-				  {   
-					if(str.charCodeAt(i)>256)   
-					{   
+				  for(i=0;i<str.length;i++)   {   
+					if(str.charCodeAt(i)>256)   {   
 						len += 2;   
-					}   
-					else   
-					{   
+					}else   {   
 						len++;   
 					}   
 				  }   
 					return len;
-			},
-			/**
-			 * 验证是不是中文字符
-			 * @param  {[type]} strChinese [description]
-			 * @param  {[type]} showMsg    [description]
-			 * @return {[type]}            [description]
-			 */
-			isChinese:function(strChinese,showMsg){
-				var reg=/^[\u4e00-\u9fa5]+$/i;
-			   //var reg=/^[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/;//支持少数民族
-			   var str=$.trim(strChinese);
-			   if(!reg.test(str)){
-			       //if(showMsg==null||showMsg=="") alert("请输入汉字!");
-			       return false;
-			   }   
-			   return true;
 			},
 			/**
 			 * 验证字符的位数
